@@ -124,11 +124,12 @@ client.on('message', async message => {
     
         let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
         if(!toMute) return message.channel.send("Merci d'entrer un utilisateur !");
-        let role = message.guild.roles.find(r => r.name === "Utilisateurs mutés");
+        let role = message.guild.roles.find(r => r.name === "Muet");
+        let member = message.guild.roles.find(r => r.name === "[✪] Membre");
         if(!role){
           try {
             role = await message.guild.createRole({
-              name: "Utilisateurs mutés",
+              name: "Muet",
               color: "#000000",
               permissions: []
             });
@@ -147,6 +148,7 @@ client.on('message', async message => {
         if(toMute.roles.has(role.id)) return message.channel.send('Cet utilisateur est déjà muté !');
     
         await(toMute.addRole(role));
+        await(toMute.removeRole(member));
         message.channel.send(`L'utilisateur <@${toMute.user.id}> a bien été muté !`);
     
         return;
@@ -160,10 +162,12 @@ client.on('message', async message => {
     
         let unMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
         if(!unMute) return message.channel.send("Merci d'entrer un utilisateur !");
-        let role = message.guild.roles.find(r => r.name === "Utilisateurs mutés");
+        let role = message.guild.roles.find(r => r.name === "Muet");
+        let member = message.guild.roles.find(r => r.name === "[✪] Membre");
     
         if(unMute.roles.has(role.id)) {
             await(unMute.removeRole(role));
+            await(unMute.addRole(member));
             message.channel.send(`L'utilisateur <@${toMute.user.id}> a bien été démuté`);
             message.delete(5000);
             return;
