@@ -12,13 +12,13 @@ client.on('ready', () => {
     client.user.setActivity("Prépare un bot pour Kali !");
 });
 
-//client.on('guildMemberAdd', member => {
-//    member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bienvenue ${member} sur Clash2Rue !`)
-//});
+client.on('guildMemberAdd', member => {
+member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bienvenue ${member} sur Clash2Rue !`)
+});
 
-//client.on("guildMemberRemove", member => {
-//    member.guild.channels.find("name", "bienvenue-aurevoir").send(`${member} vien de nous quitter !`)
-//});
+client.on("guildMemberRemove", member => {
+member.guild.channels.find("name", "bienvenue-aurevoir").send(`${member} vien de nous quitter !`)
+});
 
 client.on('guildMemberAdd', member => {
     var role = member.guild.roles.find('name', '[✪] Membre');
@@ -38,15 +38,15 @@ client.on('message', async message => {
         var help_embed = new Discord.RichEmbed()
         .setColor("#40A497")
         .setTitle("Les commandes disponible : ")
-        .addField(":help", "Savoir les commandes possible :D")
-        .addField(":ddos", "Savoir l'url de notre booter.")
-        .addField(":contact", "Connaitre comment nous contacter !")
-        .addField(".kick", "Command autorisé que pour les rangs élévé")
-        .addField(".ban", "Seul les administareurs et fondateur y ont accès")
-        .addField(".mute", "Mute un utilisateur dans le chat")
-        .addField(".unmute", "démuter un utilisateur dans le chat")
-        .addField(".purge", "Supprimer les message (2 à 100)")
-        .setFooter("Menu dévelopé pour Kali !")
+        .addField("/help", "Savoir les commandes possible :D")
+        .addField("/ddos", "Savoir l'url de notre booter.")
+        .addField("/contact", "Connaitre comment nous contacter !")
+        .addField("/kick", "Command autorisé que pour les rangs élévé")
+        .addField("/ban", "Seul les administareurs et fondateur y ont accès")
+        .addField("/mute", "Mute un utilisateur dans le chat")
+        .addField("/unmute", "démuter un utilisateur dans le chat")
+        .addField("/purge", "Supprimer les message (2 à 100)")
+        .setFooter("Kali !")
         message.channel.send(help_embed)
         console.log("Message d'aide envoyé")
     }
