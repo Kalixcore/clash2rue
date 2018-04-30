@@ -71,7 +71,7 @@ client.on('message', async message => {
         
     }     
     
-    if(message.content.startsWith(":sondage")){
+    if(message.content.startsWith("sondage")){
         if(message.member.roles.some(r => [
             "[✔] Fondateur",
             "[✔] Gérant",
