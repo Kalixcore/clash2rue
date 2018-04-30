@@ -59,14 +59,16 @@ client.on('message', async message => {
     }
     
     if(message.content === prefix + "info") {
-        var embed = new Discord.RichEmbed()
+        message.delete()
+        var info_embed = new Discord.RichEmbed()
         .setDescription("Information du serveur")
         .addField("Nom du serveur", message.guild.name)
         .addField("Créez le", message.guild.createdAt)
         .addField("Tu as rejoint le", message.member.joinedAt)
         .addField("Utilisateur sur le discord", message.guild.memberCount)
         .setColor("0x0000FF")
-        message.channel.sendEmbed(embed)
+        message.channel.sebd(info_embed)
+        console.log("Message d'info envoyé")
         
     }
 
