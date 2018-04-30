@@ -208,16 +208,11 @@ client.on('message', async message => {
     }
 
 
-    if(command === "prune"){
-        if(message.channel.permissionsFor(message.member).hasPermission("MANAGE_MESSAGE")) {
-            let args = message.content.split(" ").slice(1);
-            let amount = args[0]
-        }
-        
-        if(message.content === "invite") {
-        client.generateInvite;
-        var inviteLink = client.fetchInvite
-        message.send(inviteLink)
-    }
+    if(message.content === "/invite") {
+        var options = {
+            maxAge: 0
+          };
+        message.delete();
+        message.guild.channels.get('439350161999659009').createInvite(options).then(invite => message.channel.send(invite.url))
     }
 } );
