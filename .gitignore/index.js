@@ -12,7 +12,7 @@ client.on('ready', () => {
 });
 
 client.on('guildMemberAdd', member => {
-    member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bienvenue ${member} sur Clash2Rue !`);
+    member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bienvenue ${member} sur Clash2Rue !`)
 });
 
 client.on('guildMemberAdd', member => {
