@@ -12,13 +12,13 @@ client.on('ready', () => {
     client.user.setActivity("/help !");
 });
 
-client.on('guildMemberAdd', member => {
+/*client.on('guildMemberAdd', member => {
 member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bienvenue ${member} sur Clash2Rue !`)
 });
 
 client.on("guildMemberRemove", member => {
 member.guild.channels.find("name", "bienvenue-aurevoir").send(`${member} vien de nous quitter !`)
-});
+});*/
 
 
 
