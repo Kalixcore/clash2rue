@@ -53,6 +53,7 @@ client.on('message', async message => {
         .addField("/mute", "Mute un utilisateur dans le chat")
         .addField("/unmute", "démuter un utilisateur dans le chat")
         .addField("/purge", "Supprimer les message (1 à 3000)")
+        .addField("::sondage", "Créez un sondage (commande admin)")
         .setFooter("Kali ©")
         message.channel.send(help_embed)
         console.log("Message d'aide envoyé")
