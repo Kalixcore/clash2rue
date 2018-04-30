@@ -57,6 +57,18 @@ client.on('message', async message => {
         message.channel.send(help_embed)
         console.log("Message d'aide envoyé")
     }
+    
+    if(message.content === prefix + "info") {
+        var embed = new Discord.RichEmbed()
+        .setDescription("Information du serveur")
+        .addField("Nom du serveur", message.guild.name)
+        .addField("Créez le", message.guild.createdAt)
+        .addField("Tu as rejoint le" message.member.joinedAt)
+        .addField("Utilisateur sur le discord", message.guild.memberCount)
+        .setColor("0x0000FF")
+        message.channel.sendEmbed(embed)
+        
+    }
 
     if(message.content === prefix + "ddos") {
         message.delete()
