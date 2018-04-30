@@ -46,6 +46,7 @@ client.on('message', async message => {
         .setTitle("Les commandes disponible : ")
         .addField("/help", "Savoir les commandes possible :D")
         .addField("/ddos", "Savoir l'url de notre booter.")
+        .addField("/invite", "Créez un lien d'invitation")
         .addField("/contact", "Connaitre comment nous contacter !")
         .addField("/kick", "Command autorisé que pour les rangs élévé")
         .addField("/ban", "Seul les administareurs et fondateur y ont accès")
