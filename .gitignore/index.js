@@ -20,7 +20,11 @@ client.on("guildMemberRemove", member => {
 member.guild.channels.find("name", "bienvenue-aurevoir").send(`${member} vien de nous quitter !`)
 });*/
 
-
+client.on('guildMemberAdd', member => {
+    member.createDM().then(channel => {
+        return channel.send('Bienvenue sur Clash2Rue');
+    }).catch(console.error);
+})
 
 client.on('guildMemberAdd', member => {
     var role = member.guild.roles.find('name', '[✪] Membre');
