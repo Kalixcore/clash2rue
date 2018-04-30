@@ -55,7 +55,7 @@ client.on('message', async message => {
         .addField("/purge", "Supprimer les message (1 à 3000)")
         .addField("::sondage", "Créez un sondage (commande admin)")
         .addField("/info", "Affiche les information du serveur")
-        .setFooter("Kali ©")
+        .setFooter("K`ali ©`")
         message.channel.send(help_embed)
         console.log("Message d'aide envoyé")
     }
@@ -111,7 +111,7 @@ client.on('message', async message => {
 
     if(message.content === prefix + "contact") {
         message.delete()
-        message.reply("`Si vous avez un problème(s) sur Clash2Rue, n\'hésitez pas à contacter <@398410784532856833> !`")
+        message.reply("Si vous avez un problème(s) sur Clash2Rue, n\'hésitez pas à contacter <@398410784532856833> !")
     }
 
     let command = message.content.split(".")[0];
