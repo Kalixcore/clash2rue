@@ -189,7 +189,7 @@ client.on('message', async message => {
     if(command === "purge") {
         const deleteCount = parseInt(args[0], 10);
         
-        if(!deleteCount || deleteCount < 2 || deleteCount > 100) return message.reply("Dire un nombre entre 2 et 100");
+        if(!deleteCount || deleteCount < 1 || deleteCount > 3000) return message.reply("Dire un nombre entre 2 et 100");
 
         const fetched = await message.channel.fetchMessages({count: deleteCount});
         message.channel.bulkDelete(fetched)
