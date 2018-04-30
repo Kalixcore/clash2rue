@@ -9,7 +9,7 @@ client.login(process.env.TOKEN);
 
 client.on('ready', () => {
     console.log("Pret !");
-    client.user.setActivity("Prépare un bot pour Kali !");
+    client.user.setActivity("/help !");
 });
 
 client.on('guildMemberAdd', member => {
@@ -19,6 +19,8 @@ member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bienvenue ${membe
 client.on("guildMemberRemove", member => {
 member.guild.channels.find("name", "bienvenue-aurevoir").send(`${member} vien de nous quitter !`)
 });
+
+
 
 client.on('guildMemberAdd', member => {
     var role = member.guild.roles.find('name', '[✪] Membre');
@@ -46,7 +48,7 @@ client.on('message', async message => {
         .addField("/mute", "Mute un utilisateur dans le chat")
         .addField("/unmute", "démuter un utilisateur dans le chat")
         .addField("/purge", "Supprimer les message (2 à 100)")
-        .setFooter("Kali !")
+        .setFooter("Kali ©")
         message.channel.send(help_embed)
         console.log("Message d'aide envoyé")
     }
