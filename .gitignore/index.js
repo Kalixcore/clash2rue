@@ -54,6 +54,7 @@ client.on('message', async message => {
         .addField("/unmute", "démuter un utilisateur dans le chat")
         .addField("/purge", "Supprimer les message (1 à 3000)")
         .addField("::sondage", "Créez un sondage (commande admin)")
+        .addField("/info", "Affiche les information du serveur")
         .setFooter("Kali ©")
         message.channel.send(help_embed)
         console.log("Message d'aide envoyé")
@@ -63,13 +64,13 @@ client.on('message', async message => {
         var info_embed = new Discord.RichEmbed()
         .setColor("0x0000FF")
         .setDescription("Information du serveur")
-        .addField("Nom du serveur", message.guild.name)
-        .addField("Créez le", message.guild.createdAt)
+        .addField("Nom du serveur :", message.guild.name)
+        .addField("Créez en date du :", message.guild.createdAt)
         .addField("Tu as rejoint le", message.member.joinedAt)
-        .addField("Utilisateur sur le discord", message.guild.memberCount)
-        .addField("Afficher les banni", message.guild.fetchMembers)
+        .addField("Nombre d'utilisateur :", message.guild.memberCount)
+        .setFooter("Menu d'information")
         message.channel.send(info_embed)
-        console.log("Message d'info envoyé")
+        console.log("Message d'information envoyé")
         
     }     
     
