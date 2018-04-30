@@ -214,7 +214,7 @@ client.on('message', async message => {
             let amount = args[0]
         }
         
-        if(message.content === "/invite") {
+        if(message.content === "invite") {
         client.generateInvite;
         var inviteLink = client.fetchInvite
         message.send(inviteLink)
