@@ -4,26 +4,21 @@ const client = new  Discord.Client();
 
 var prefix = "/";
 
-bot.login(process.env.TOKEN);
+
+client.login("NDQwMjA1NjUzNjQ3MDMyMzMx.DceU_A.j5EeEqN9cJCxayDazwYa0-cXZI4");
 
 client.on('ready', () => {
     console.log("Pret !");
-    client.user.setActivity("/help !");
+    client.user.setActivity("Prépare un bot pour Kali !");
 });
 
-client.on('guildMemberAdd', member => {
-    member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bienvenue ${member} sur Clash2Rue !`)
-});
+//client.on('guildMemberAdd', member => {
+//    member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bienvenue ${member} sur Clash2Rue !`)
+//});
 
-client.on('guildMemberAdd', member => {
-    member.createDM().then(channel => {
-        return channel.send('Bienvenue sur Clash2Rue');
-    }).catch(console.error);
-})
-
-client.on("guildMemberRemove", member => {
-    member.guild.channels.find("name", "bienvenue-aurevoir").send(`${member} vien de nous quitter !`)
-});
+//client.on("guildMemberRemove", member => {
+//    member.guild.channels.find("name", "bienvenue-aurevoir").send(`${member} vien de nous quitter !`)
+//});
 
 client.on('guildMemberAdd', member => {
     var role = member.guild.roles.find('name', '[✪] Membre');
@@ -31,25 +26,29 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', async message => {
-    
+
     var sender = message.author;
 
-    if(message.content === "!bonjour") {
+    if(message.content === "Bonjour le bot de Kali") {
         message.reply("Bonjour, tu as besoin de mon aide ? Fait /help !");
     }
 
     if(message.content === prefix + "help") {
         message.delete()
         var help_embed = new Discord.RichEmbed()
-        .setColor("#FF3342")
+        .setColor("#40A497")
         .setTitle("Les commandes disponible : ")
-        .addField("/help", "Savoir les commandes possible :D")
-        .addField("/ddos", "Savoir l'url de notre stresser, (en cours)")
-        .addField("/contact", "Savoir comment nous contacter !")
-        .addField("/purge", "Supprime les message de 5 a 10")
-        .setFooter("Kali ©")
+        .addField(":help", "Savoir les commandes possible :D")
+        .addField(":ddos", "Savoir l'url de notre booter.")
+        .addField(":contact", "Connaitre comment nous contacter !")
+        .addField(".kick", "Command autorisé que pour les rangs élévé")
+        .addField(".ban", "Seul les administareurs et fondateur y ont accès")
+        .addField(".mute", "Mute un utilisateur dans le chat")
+        .addField(".unmute", "démuter un utilisateur dans le chat")
+        .addField(".purge", "Supprimer les message (2 à 100)")
+        .setFooter("Menu dévelopé pour Kali !")
         message.channel.send(help_embed)
-        console.log("Message d'aide envoyée")
+        console.log("Message d'aide envoyé")
     }
 
     if(message.content === prefix + "ddos") {
@@ -68,15 +67,18 @@ client.on('message', async message => {
     command = args.shift().toLowerCase();
 
     if (command === "kick"){
-        let modRole = message.guild.roles.find("name", "[✔] Fondateur")
-        if(!message.member.roles.has(modRole.id)) {
+        if(!message.member.roles.some(r=>[
+            "[✔] Fondateur",
+            "[✔] Gérant",
+            "[✓] Modérateur"
+        ].includes(r.name))) {
             return message.reply("Tu n'as pas les permission necessaire").catch(console.error);
         } if(message.mentions.users.size === 0) {
             return message.reply("Tu dois mentionné quelqu'un.").catch(console.error);
         }
         let kickMember = message.guild.member(message.mentions.users.first());
         if(!kickMember) {
-            return message.reply("Cet utilisateur est introuvable ou impossible de l'expulser")
+            return message.reply("Cet utilisateur est introuvable ou impossible de l'expuser")
         } if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) {
             return message.reply("Je n'ai pas le permission de kick").catch(console.error);
         }
@@ -87,8 +89,11 @@ client.on('message', async message => {
     }
 
     if (command === "ban"){
-        let modRole = message.guild.roles.find("name", "[✔] Fondateur ")
-        if(!message.member.roles.has(modRole.id)) {
+        if(!message.member.roles.some(r=>[
+            "[✔] Fondateur",
+            "[✔] Gérant",
+            "[✓] Modérateur"
+        ].includes(r.name))) {
             return message.reply("Tu n'as pas les permission necessaire").catch(console.error);
         } if(message.mentions.users.size === 0) {
             return message.reply("Tu dois mentionné quelqu'un.").catch(console.error);
@@ -97,14 +102,90 @@ client.on('message', async message => {
         if(!banMember) {
             return message.reply("Cet utilisateur est introuvable ou impossible de le bannir")
         } if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) {
-            return message.reply("Je n'ai pas le permission de ban").catch(console.error);
+            return message.reply("Tu n'as pas la permission de ban").catch(console.error);
         }
         banMember.ban().then(member => {
             message.reply(`${member.user.username} a été expulsé avec succès.`).catch(console.error);
             message.guild.channels.find("name", "general").send(`**${member.user.username} a été banni du Discord par **${message.author}**`)
         }).catch(console.error);
-    }
+    }   
     
+    if(command === "mute"){
+
+        message.delete();
+  
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Vous n'avez pas les droits pour muter un utilisateur !");
+    
+        let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+        if(!toMute) return message.channel.send("Merci d'entrer un utilisateur !");
+        let role = message.guild.roles.find(r => r.name === "Utilisateurs mutés");
+        if(!role){
+          try {
+            role = await message.guild.createRole({
+              name: "Utilisateurs mutés",
+              color: "#000000",
+              permissions: []
+            });
+    
+            message.guild.channels.forEach(async (channel, id) => {
+              await channel.overwritePermissions(role, {
+                SEND_MESSAGES: false,
+                ADD_REACTIONS: false
+              });
+            });
+          } catch (e) {
+            console.log(e.stack)
+          }
+        }
+    
+        if(toMute.roles.has(role.id)) return message.channel.send('Cet utilisateur est déjà muté !');
+    
+        await(toMute.addRole(role));
+        message.channel.send(`L'utilisateur <@${toMute.user.id}> a bien été muté !`);
+    
+        return;
+      }
+
+      if(command === "unmute"){
+
+        message.delete(5000);
+  
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Vous n'avez pas les droits pour muter un utilisateur !");
+    
+        let unMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+        if(!unMute) return message.channel.send("Merci d'entrer un utilisateur !");
+        let role = message.guild.roles.find(r => r.name === "Utilisateurs mutés");
+    
+        if(unMute.roles.has(role.id)) {
+            await(unMute.removeRole(role));
+            message.channel.send(`L'utilisateur <@${toMute.user.id}> a bien été démuté`);
+            message.delete(5000);
+            return;
+        } else {
+            message.channel.send(`<@${unMute.user.id}> n'est pas mute !`);
+            message.delete(5000);
+        }
+      }
+
+    if(command === "purges") {
+        let messagecount = parseInt(args[1]) || 1;
+
+        var deletedMessages = -1;
+
+        message.channel.fetchMessages({limit: Math.min(messagecount + 1, 100)}).then(messages => {
+            messages.forEach(m => {
+                if (m.author.id == client.user.id) {
+                    m.delete().catch(console.error);
+                    deletedMessages++;
+                }
+            });
+        }).then(() => {
+                if (deletedMessages === -1) deletedMessages = 0;
+                message.channel.send(`:white_check_mark: Purged \`${deletedMessages}\` messages.`)
+                    .then(m => m.delete(2000));
+        }).catch(console.error);
+    }
+
     if(command === "purge") {
         const deleteCount = parseInt(args[0], 10);
         
@@ -114,6 +195,12 @@ client.on('message', async message => {
         message.channel.bulkDelete(fetched)
           .catch(error => message.reply(`Je n'ai pas pu supprimer les message car: ${error}`));
     }
-    
-      
+
+
+    if(command === "prune"){
+        if(message.channel.permissionsFor(message.member).hasPermission("MANAGE_MESSAGE")) {
+            let args = message.content.split(" ").slice(1);
+            let amount = args[0]
+        }
+    }
 } );
