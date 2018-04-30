@@ -71,24 +71,24 @@ client.on('message', async message => {
         
     }
     
-    if (message.content.startsWitch(prefix + "sondage")) {
-        if(message.author.is == "440120153779208219"){
-            let args = message.content.split("  ").slice(1);
-            let thingToEcho = args.join("  ")
-            var embed = new Discord.RicheEmbed()
-            .setDescription("Sondage")
-            .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x")
-            .setColor("0xB40404")
-            .setTimestamp()
-            message.guild.channels.find("name", "sondage").sendEmbed(embed)
-            .then(function (message) {
-                message.react("✓")
-                message.react("✘")
-                              }).catch(function() {
-                });
+   if (message.content.startsWith(prefix + "sondage")) {
+          if(message.author.is =="..."){
+              let args = message.content.split(" ").slice(1);
+              let thingToEcho = args.join(" ")
+              var embed = new Discord.RichEmbed()
+              .setDescription("Sondage")
+              .addField(thingToEcho, "Répondre avec :white_check_mark: ou x:x")
+              .setColor("0xB40404")
+              .setTimestamp()
+              message.guild.channels.find("name", "sondage").sendEmbed(embed)
+              .then(function (message) {
+                  message.react(" ")
+                  message.react(" ")
+              }).catch(function() {
+              });
             }else{
-                  return message.reply("Tu n'as pas la permission.")
-        }}})
+                return message.reply("Tu n'as pas la permission.")
+            }}})
                 
                 
 
