@@ -69,7 +69,34 @@ client.on('message', async message => {
         message.channel.send(info_embed)
         console.log("Message d'info envoyé")
         
-    }            
+    }     
+    
+    if(message.content.startsWith(":sondage")){
+        if(message.member.roles.some(r => [
+            "[✔] Fondateur",
+            "[✔] Gérant",
+            "[✓] Modérateur"
+        ])) {
+           
+            let args = message.content.split(" ").slice(1);
+            let thingToEcho = args.join(" ")
+            var embed = new Discord.RichEmbed()
+                .setDescription('Sondage')
+                .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x:")
+                .setColor("0xB40404")
+                .setTimestamp()
+            message.guild.channels.find("name", "sondage").send(embed)
+            .then(function (message){
+                message.react(message.guild.emojis.get("c6b26ba81f44b0c43697852e1e1d1420"))
+                message.react(message.guild.emojis.get("b1868d829b37f0a81533ededb9ffe5f4"))
+            }).catch(function(){
+               
+            });
+            message.delete()
+        }else{
+            return message.reply("Tu n'as pas la permission.")
+        }
+    }
 
     if(message.content === prefix + "ddos") {
         message.delete()
