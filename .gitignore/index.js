@@ -22,7 +22,7 @@ member.guild.channels.find("name", "bienvenue-aurevoir").send(`${member} vien de
 
 client.on('guildMemberAdd', member => {
     member.createDM().then(channel => {
-        return channel.send('Bienvenue sur Clash2Rue');
+        return channel.send('Bienvenue sur Clash2Rue, amuse toi bien !');
     }).catch(console.error);
 })
 
@@ -35,7 +35,7 @@ client.on('message', async message => {
 
     var sender = message.author;
 
-    if(message.content === "Bonjour le bot de Kali") {
+    if(message.content === "!bot") {
         message.reply("Bonjour, tu as besoin de mon aide ? Fait /help !");
     }
 
@@ -52,7 +52,7 @@ client.on('message', async message => {
         .addField("/ban", "Seul les administareurs et fondateur y ont accès")
         .addField("/mute", "Mute un utilisateur dans le chat")
         .addField("/unmute", "démuter un utilisateur dans le chat")
-        .addField("/purge", "Supprimer les message (2 à 100)")
+        .addField("/purge", "Supprimer les message (1 à 3000)")
         .setFooter("Kali ©")
         message.channel.send(help_embed)
         console.log("Message d'aide envoyé")
