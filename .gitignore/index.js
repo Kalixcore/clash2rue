@@ -213,5 +213,11 @@ client.on('message', async message => {
             let args = message.content.split(" ").slice(1);
             let amount = args[0]
         }
+        
+        if(message.content === "/invite") {
+        client.generateInvite;
+        var inviteLink = client.fetchInvite
+        message.send(inviteLink)
+    }
     }
 } );
