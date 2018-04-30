@@ -67,7 +67,7 @@ client.on('message', async message => {
         .addField("Créez le", message.guild.createdAt)
         .addField("Tu as rejoint le", message.member.joinedAt)
         .addField("Utilisateur sur le discord", message.guild.memberCount)
-        .addField("Afficher les banni", guild.fetchBans)
+        .addField("Afficher les banni", message.guild.fetchMembers)
         message.channel.send(info_embed)
         console.log("Message d'info envoyé")
         
