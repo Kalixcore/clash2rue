@@ -36,7 +36,7 @@ client.on('message', async message => {
     var sender = message.author;
 
     if(message.content === "!bot") {
-        message.reply("Bonjour, tu as besoin de mon aide ? Fait /help !");
+        message.reply("Bonjour, tu as besoin de mon aide ? fait -help !");
     }
     
     var sender = message.author;
@@ -92,7 +92,7 @@ client.on('message', async message => {
             var embed = new Discord.RichEmbed()
                 .setDescription('Sondage')
                 .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x:")
-                .setColor("0xB40404")
+                .setColor("#1E87DC")
                 .setTimestamp()
             message.guild.channels.find("name", "sondage").send(embed)
             .then(function (message){
