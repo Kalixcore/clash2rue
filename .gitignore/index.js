@@ -86,7 +86,6 @@ client.on('message', async message => {
             "[✔] Fondateur",
             "[✔] Gérant",
             "[✓] Modérateur"
-            "[✪] Membre"
         ])) {
            
             let args = message.content.split(" ").slice(1);
@@ -113,7 +112,8 @@ client.on('message', async message => {
         if(message.member.roles.some(r => [
             "[✔] Fondateur",
             "[✔] Gérant",
-            "[✓] Modérateur"
+            "[✓] Modérateur",
+            "[✪] Membre"
         ])) {
            
             let args = message.content.split(" ").slice(1);
