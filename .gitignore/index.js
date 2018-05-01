@@ -41,6 +41,7 @@ client.on('message', async message => {
     
     if(message.content === "!kali") {
         message.reply("Il est le meilleur des fondateur!");
+    }
 
     if(message.content === prefix + "help") {
         message.delete()
