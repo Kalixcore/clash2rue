@@ -106,6 +106,32 @@ client.on('message', async message => {
             return message.reply("Tu n'as pas la permission.")
         }
     }
+    
+    if(message.content.startsWith("::suggestion")){
+        if(message.member.roles.some(r => [
+            "[✔] Fondateur",
+            "[✔] Gérant",
+            "[✓] Modérateur"
+        ])) {
+           
+            let args = message.content.split(" ").slice(1);
+            let thingToEcho = args.join(" ")
+            var embed = new Discord.RichEmbed()
+                .setDescription('Suggestion(s)')
+                .addField(thingToEcho, "Répondre avec :white_check_mark: ou :x:")
+                .setColor("#1E87DC")
+                .setTimestamp()
+            message.guild.channels.find("name", "suggestion").send(embed)
+            .then(function (message){
+                message.react(message.guild.emojis.get("c6b26ba81f44b0c43697852e1e1d1420"))
+                message.react(message.guild.emojis.get("b1868d829b37f0a81533ededb9ffe5f4"))
+            }).catch(function(){
+               
+            });
+            message.delete()
+        }else{
+            return message.reply("Tu n'as pas la permission.")
+        }
 
     if(message.content === prefix + "encours") {
         message.delete()
