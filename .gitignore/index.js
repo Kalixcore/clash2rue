@@ -64,6 +64,7 @@ client.on('message', async message => {
     if(message.content === prefix + "info") {
         var info_embed = new Discord.RichEmbed()
         .setColor("0x0000FF")
+        .setThumbnail(message.author.avatarURL)
         .setDescription("Information du serveur")
         .addField("Nom du serveur :", message.guild.name)
         .addField("Nombre d'utilisateur :", message.guild.memberCount)
