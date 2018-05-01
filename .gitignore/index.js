@@ -43,6 +43,7 @@ client.on('message', async message => {
         message.delete()
         var help_embed = new Discord.RichEmbed()
         .setColor("#40A497")
+        .setThumbnail(message.author.avatarURL)
         .setTitle("Les commandes disponible : ")
         .addField("/help", "Savoir les commandes possible :D")
         .addField("/ddos", "Savoir l'url de notre booter.")
