@@ -9,7 +9,7 @@ client.login(process.env.TOKEN);
 
 client.on('ready', () => {
     console.log("Pret !");
-    client.user.setActivity("/help !");
+    client.user.setActivity("-help !");
 });
 
 /*client.on('guildMemberAdd', member => {
@@ -58,6 +58,7 @@ client.on('message', async message => {
         .addField("-unmute", "démuter un utilisateur dans le chat")
         .addField("-purge", "Supprimer les message (1 à 3000)")
         .addField("::sondage", "Créez un sondage (commande admin)")
+        .addField("::suggestion", "Créez une suggestion")
         .addField("-info", "Affiche les information du serveur")
         .setFooter("Créez par Kali ©")
         message.channel.send(help_embed)
@@ -85,6 +86,7 @@ client.on('message', async message => {
             "[✔] Fondateur",
             "[✔] Gérant",
             "[✓] Modérateur"
+            "[✪] Membre"
         ])) {
            
             let args = message.content.split(" ").slice(1);
