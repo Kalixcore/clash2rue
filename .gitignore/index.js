@@ -128,9 +128,9 @@ client.on('message', async message => {
             "[✔] Gérant",
             "[✓] Modérateur"
         ].includes(r.name))) {
-            return message.reply("Tu n'as pas les permission necessaire").catch(console.error);
+            return message.reply("Vous n'avez pas les permissions nécessaire.").catch(console.error);
         } if(message.mentions.users.size === 0) {
-            return message.reply("Tu dois mentionné quelqu'un.").catch(console.error);
+            return message.reply("Vous devez mentionné quelqu'un.").catch(console.error);
         }
         let kickMember = message.guild.member(message.mentions.users.first());
         if(!kickMember) {
