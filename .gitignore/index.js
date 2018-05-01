@@ -13,7 +13,7 @@ client.on('ready', () => {
 });
 
 /*client.on('guildMemberAdd', member => {
-member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bienvenue ${member} sur Clash2Rue !`)
+member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bienvenue ${member} sur ${message.guild.name} !`)
 });
 
 client.on("guildMemberRemove", member => {
@@ -22,7 +22,7 @@ member.guild.channels.find("name", "bienvenue-aurevoir").send(`${member} vien de
 
 client.on('guildMemberAdd', member => {
     member.createDM().then(channel => {
-        return channel.send('Bienvenue sur Clash2Rue, amuse toi bien !');
+        return channel.send(`Bienvenue sur ${message.guild.name}, amuse toi bien !`);
     }).catch(console.error);
 })
 
@@ -55,7 +55,7 @@ client.on('message', async message => {
         .addField("/purge", "Supprimer les message (1 à 3000)")
         .addField("::sondage", "Créez un sondage (commande admin)")
         .addField("/info", "Affiche les information du serveur")
-        .setFooter("Kali ©")
+        .setFooter("Créez par Kali ©")
         message.channel.send(help_embed)
         console.log("Message d'aide envoyé")
     }
@@ -111,7 +111,7 @@ client.on('message', async message => {
 
     if(message.content === prefix + "contact") {
         message.delete()
-        message.reply("Si vous avez un problème(s) sur Clash2Rue, n\'hésitez pas à contacter <@398410784532856833> !")
+        message.reply(`Si vous avez un problème(s) sur ${message.guild.name}, n\'hésitez pas à contacter <@398410784532856833> !`)
     }
 
     let command = message.content.split(".")[0];
