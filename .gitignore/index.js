@@ -51,9 +51,7 @@ client.on('message', async message => {
         .setThumbnail(message.author.avatarURL)
         .setTitle("Les commandes disponible : ")
         .addField("/help", "Savoir les commandes possible :D")
-        .addField("/ddos", "Savoir l'url de notre booter.")
-        .addField("/invite", "Créez un lien d'invitation")
-        .addField("/contact", "Connaitre comment nous contacter !")
+        .addField("/encours", "En création")
         .addField("/kick", "Command autorisé que pour les rangs élévé")
         .addField("/ban", "Seul les administareurs et fondateur y ont accès")
         .addField("/mute", "Mute un utilisateur dans le chat")
@@ -72,6 +70,7 @@ client.on('message', async message => {
         .setThumbnail(message.author.avatarURL)
         .setDescription("Information du serveur")
         .addField("Nom du serveur :", message.guild.name)
+        .addField("ID :", `${clientuser.id}`)
         .addField("Nombre d'utilisateur :", message.guild.memberCount)
         .setFooter("Menu d'information")
         message.channel.send(info_embed)
@@ -108,10 +107,10 @@ client.on('message', async message => {
         }
     }
 
-    if(message.content === prefix + "ddos") {
+    if(message.content === prefix + "encours") {
         message.delete()
-        message.reply("Nous vous communiquerons trés prochainement l'adresse de notre stresser.")
-        console.log("Message DDOS envoyé")
+        message.reply("Je travaille actuelement sur cette commande")
+        console.log("Message envoyé")
     }
 
     if(message.content === prefix + "contact") {
