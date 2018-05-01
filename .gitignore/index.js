@@ -38,6 +38,9 @@ client.on('message', async message => {
     if(message.content === "!bot") {
         message.reply("Bonjour, tu as besoin de mon aide ? Fait /help !");
     }
+    
+    if(message.content === "!kali") {
+        message.reply("Il est le meilleur des fondateur!");
 
     if(message.content === prefix + "help") {
         message.delete()
