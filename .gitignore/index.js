@@ -65,8 +65,6 @@ client.on('message', async message => {
         .setColor("0x0000FF")
         .setDescription("Information du serveur")
         .addField("Nom du serveur :", message.guild.name)
-        .addField("Créez en date du :", message.guild.createdAt)
-        .addField("Tu as rejoint le", message.member.joinedAt)
         .addField("Nombre d'utilisateur :", message.guild.memberCount)
         .setFooter("Menu d'information")
         message.channel.send(info_embed)
