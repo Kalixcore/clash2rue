@@ -59,7 +59,7 @@ client.on('message', async message => {
         .addField("-purge", "Supprimer les message (1 à 3000)")
         .addField("::sondage", "Créez un sondage (commande admin)")
         .addField("-info", "Affiche les information du serveur")
-        .setFooter("Créez par Kali ©")
+        .setFooter("Créez par Kali & Greysi ©")
         message.channel.send(help_embed)
         console.log("Message d'aide envoyé")
     }
