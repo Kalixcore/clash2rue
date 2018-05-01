@@ -132,6 +132,7 @@ client.on('message', async message => {
         }else{
             return message.reply("Tu n'as pas la permission.")
         }
+    }
 
     if(message.content === prefix + "encours") {
         message.delete()
