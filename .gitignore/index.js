@@ -39,6 +39,7 @@ client.on('message', async message => {
         message.reply("Bonjour, tu as besoin de mon aide ? Fait /help !");
     }
     
+    var sender = message.author;
     if(message.content === "!kali") {
         message.reply("Il est le meilleur des fondateur!");
     }
