@@ -70,7 +70,7 @@ client.on('message', async message => {
         .setThumbnail(message.author.avatarURL)
         .setDescription("Information du serveur")
         .addField("Nom du serveur :", message.guild.name)
-        .addField(`ID :", ${clientuser.id}`)
+        .addField(ID :", `${clientuser.id}`)
         .addField("Nombre d'utilisateur :", message.guild.memberCount)
         .setFooter("Menu d'information")
         message.channel.send(info_embed)
