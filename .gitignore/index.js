@@ -40,7 +40,7 @@ client.on('message', async message => {
     }
     
     var sender = message.author;
-    if(message.content === "!kali") {
+    if(message.content === "!playsquad") {
         message.reply("Il est le meilleur des fondateur!");
     }
 
@@ -59,6 +59,7 @@ client.on('message', async message => {
         .addField("-purge", "Supprimer les message (1 à 3000)")
         .addField("::sondage", "Créez un sondage (commande admin)")
         .addField("::suggestion", "Créez une suggestion")
+        .addField("/playsquad", "Serveur en aliance")
         .addField("-info", "Affiche les information du serveur")
         .setFooter("Créez par Kali ©")
         message.channel.send(help_embed)
@@ -286,11 +287,11 @@ client.on('message', async message => {
     }
 
 
-    if(message.content === "/invite") {
+    if(message.content === "/playsquad") {
         var options = {
             maxAge: 0
           };
         message.delete();
-        message.guild.channels.get('439350161999659009').createInvite(options).then(invite => message.channel.send(invite.url))
+        message.guild.channels.get('44116962453762867').createInvite(options).then(invite => message.channel.send(invite.url))
     }
 } );
