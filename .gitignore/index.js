@@ -41,7 +41,7 @@ client.on('message', async message => {
     
     var sender = message.author;
     if(message.content === "!playsquad") {
-        message.reply("Il est le meilleur des fondateur!");
+        message.reply("https://discord.gg/mkmUSRg");
     }
 
     if(message.content === prefix + "help") {
